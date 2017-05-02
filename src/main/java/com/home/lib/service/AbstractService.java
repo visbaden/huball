@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 @Transactional
 public abstract class AbstractService<T, PK extends Serializable> {
 

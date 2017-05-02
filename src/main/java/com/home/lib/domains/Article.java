@@ -1,10 +1,12 @@
 package com.home.lib.domains;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
 public class Article extends AbstractEntity {
+    @OneToMany
     private List<Picture> pics;
     private String text;
 

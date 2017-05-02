@@ -1,15 +1,13 @@
 package com.home.lib.domains;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 public class Question extends AbstractEntity {
     private String question;
     private String code;
+    @OneToOne
     private Picture pic;
 
     @Enumerated(EnumType.STRING)
@@ -17,10 +15,6 @@ public class Question extends AbstractEntity {
 
     @OneToMany
     private Set<Answer> answers;
-
-    public boolean addAnswer(Answer answer){
-        return answers.add(answer);
-    }
 
     public String getQuestion() {
         return question;
@@ -38,20 +32,20 @@ public class Question extends AbstractEntity {
         this.code = code;
     }
 
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
-
     public Picture getPic() {
         return pic;
     }
 
     public void setPic(Picture pic) {
         this.pic = pic;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public Set<Answer> getAnswers() {
@@ -62,7 +56,7 @@ public class Question extends AbstractEntity {
         this.answers = answers;
     }
 
-    enum Difficulty {
+    public enum Difficulty {
         EASY, MIDDLE, HARD
     }
 }
